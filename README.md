@@ -19,7 +19,7 @@ Eg. `todofinder ~/myproject`
 
 ### Args
 
-<path>: (optional) defaults to current working directory
+path: (optional) defaults to current working directory
 
 ### Enhancements / Known Caveats
 
