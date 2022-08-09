@@ -18,15 +18,21 @@ func (impl *TodoFinderImpl) Find(initialPath string) (todos []*TodoItem, err err
 		return todos, err
 	}
 
+	// Use abs path
+	absPath, err := filepath.Abs(initialPath)
+	if err != nil {
+		return todos, err
+	}
+
 	// Process
 	if fi.IsDir() {
-		todoRes, err := impl.FindFromDir(initialPath)
+		todoRes, err := impl.FindFromDir(absPath)
 		if err != nil {
 			return todos, err
 		}
 		todos = append(todos, todoRes...)
 	} else {
-		todoRes, err := impl.FindFromFile(initialPath)
+		todoRes, err := impl.FindFromFile(absPath)
 		if err != nil {
 			return todos, err
 		}
